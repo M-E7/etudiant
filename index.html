@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Développement & Accompagnement Académique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bleu-principal: #0A3D62;
+            --bleu-secondaire: #1B6CA8;
+            --blanc: #FFFFFF;
+            --gris-clair: #F4F6F8;
+            --accent-or: #C9A961;
+            --texte-gris: #5A6C7D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--bleu-principal);
+            overflow-x: hidden;
+            background: var(--blanc);
+        }
+
+        /* PARTICLES BACKGROUND */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bleu-principal) 0%, #0d5282 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Geometric background pattern */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(30deg, rgba(27, 108, 168, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(27, 108, 168, 0.1) 87.5%, rgba(27, 108, 168, 0.1)),
+                linear-gradient(150deg, rgba(27, 108, 168, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(27, 108, 168, 0.1) 87.5%, rgba(27, 108, 168, 0.1)),
+                linear-gradient(30deg, rgba(27, 108, 168, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(27, 108, 168, 0.1) 87.5%, rgba(27, 108, 168, 0.1)),
+                linear-gradient(150deg, rgba(27, 108, 168, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(27, 108, 168, 0.1) 87.5%, rgba(27, 108, 168, 0.1));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+            opacity: 0.3;
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { background-position: 0 0, 0 0, 40px 70px, 40px 70px; }
+            100% { background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px; }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -15%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 60%);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 30px) scale(1.1); }
+        }
+
+        /* Glowing orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: float-orb 20s ease-in-out infinite;
+        }
+
+        .glow-orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(27, 108, 168, 0.6), transparent);
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .glow-orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.5), transparent);
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 5s;
+        }
+
+        .glow-orb-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(13, 82, 130, 0.5), transparent);
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+                opacity: 0.4;
+            }
+            25% { 
+                transform: translate(30px, -40px) scale(1.1);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translate(-20px, 20px) scale(0.9);
+                opacity: 0.3;
+            }
+            75% { 
+                transform: translate(40px, 30px) scale(1.05);
+                opacity: 0.5;
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--blanc);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            font-weight: 400;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--blanc);
+            color: var(--bleu-principal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--accent-or);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .cta-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            color: var(--blanc);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            color: var(--blanc);
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        /* SERVICES SECTION */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--blanc);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--bleu-principal);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--texte-gris);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            padding: 2.5rem 2rem;
+            background: var(--gris-clair);
+            border-left: 4px solid var(--bleu-secondaire);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(27, 108, 168, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(27, 108, 168, 0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) rotateX(2deg);
+            box-shadow: 
+                0 20px 40px rgba(10, 61, 98, 0.15),
+                0 10px 20px rgba(10, 61, 98, 0.1);
+            border-left-color: var(--accent-or);
+            background: linear-gradient(135deg, var(--gris-clair) 0%, #ffffff 100%);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--bleu-principal), var(--bleu-secondaire));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(10, 61, 98, 0.2);
+        }
+
+        .service-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+            transition: transform 0.4s ease;
+        }
+
+        .service-icon::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--bleu-secondaire), var(--accent-or));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotateY(360deg) scale(1.1);
+            box-shadow: 0 10px 25px rgba(10, 61, 98, 0.3);
+        }
+
+        .service-card:hover .service-icon svg {
+            transform: scale(1.2);
+        }
+
+        .service-card:hover .service-icon::before {
+            opacity: 1;
+            animation: rotate-border 3s linear infinite;
+        }
+
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--bleu-principal);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--texte-gris);
+            line-height: 1.6;
+        }
+
+        /* PRICING SECTION */
+        .pricing {
+            padding: 6rem 2rem;
+            background: var(--gris-clair);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--bleu-secondaire), transparent);
+        }
+
+        /* Animated background circles */
+        .pricing::after {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(27, 108, 168, 0.05) 0%, transparent 70%);
+            animation: rotate-slow 30s linear infinite;
+        }
+
+        @keyframes rotate-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .pricing-decoration {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 2px dashed rgba(27, 108, 168, 0.1);
+            bottom: -150px;
+            left: -150px;
+            animation: rotate-slow 40s linear infinite reverse;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--blanc);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 5px 20px rgba(10, 61, 98, 0.08);
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--bleu-principal), var(--bleu-secondaire));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        /* Shimmer effect */
+        .pricing-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 70%
+            );
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .pricing-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pricing-card:hover::after {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 25px 60px rgba(10, 61, 98, 0.25),
+                0 0 0 1px rgba(27, 108, 168, 0.1);
+            border-color: var(--bleu-secondaire);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-or);
+            background: linear-gradient(135deg, #fff 0%, #fafbfc 100%);
+            box-shadow: 
+                0 10px 30px rgba(201, 169, 97, 0.2),
+                0 0 0 1px rgba(201, 169, 97, 0.1);
+        }
+
+        .pricing-card.featured::before {
+            background: linear-gradient(90deg, var(--accent-or), #d4b36a);
+            transform: scaleX(1);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 
+                0 30px 70px rgba(201, 169, 97, 0.35),
+                0 0 0 2px var(--accent-or);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--bleu-secondaire);
+            color: var(--blanc);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card.featured .pricing-badge {
+            background: var(--accent-or);
+        }
+
+        .pricing-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--bleu-principal);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .pricing-amount {
+            font-size: 2.5rem;
+            color: var(--bleu-principal);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-amount span {
+            font-size: 1rem;
+            color: var(--texte-gris);
+            font-weight: 400;
+        }
+
+        .pricing-note {
+            color: var(--texte-gris);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            color: var(--texte-gris);
+            position: relative;
+            padding-left: 2rem;
+            line-height: 1.6;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--bleu-secondaire);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pricing-card.featured .pricing-features li::before {
+            color: var(--accent-or);
+        }
+
+        .btn-pricing {
+            display: block;
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--bleu-principal);
+            color: var(--blanc);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            border: 2px solid var(--bleu-principal);
+        }
+
+        .btn-pricing:hover {
+            background: var(--blanc);
+            color: var(--bleu-principal);
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(10, 61, 98, 0.3);
+        }
+
+        .pricing-card.featured .btn-pricing {
+            background: var(--accent-or);
+            border-color: var(--accent-or);
+        }
+
+        .pricing-card.featured .btn-pricing:hover {
+            background: var(--blanc);
+            color: var(--accent-or);
+        }
+
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 5px 30px rgba(37, 211, 102, 0.7);
+            }
+            100% {
+                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--bleu-principal);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--blanc);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-or);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .whatsapp-float svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        /* SMOOTH SCROLL */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ENTRANCE ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.2s; }
+        .fade-in-delay-2 { animation-delay: 0.4s; }
+        .fade-in-delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero" id="accueil">
+        <div class="particles"></div>
+        <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+        <div class="glow-orb glow-orb-3"></div>
+        
+        <div class="hero-content">
+            <h1>Développement d'Applications<br>& Accompagnement Académique</h1>
+            <p class="hero-subtitle">Des solutions complètes et professionnelles pour réussir votre stage et votre projet de fin de cycle</p>
+            <a href="#plans" class="cta-primary"><span>Découvrir les offres</span></a>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <p class="section-subtitle">Un accompagnement complet et structuré pour garantir la qualité de vos livrables académiques</p>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                        </svg>
+                    </div>
+                    <h3>Développement d'Application</h3>
+                    <p>Application fonctionnelle avec interface professionnelle et code propre, structuré et documenté</p>
+                </div>
+                
+                <div class="service-card fade-in fade-in-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
+                            <path d="M8 15h8v2H8zm0-3h8v2H8zm0-3h5v2H8z"/>
+                        </svg>
+                    </div>
+                    <h3>Rédaction de Rapport</h3>
+                    <p>Rapport de stage complet respectant les normes académiques avec mise en forme professionnelle</p>
+                </div>
+                
+                <div class="service-card fade-in fade-in-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                    </div>
+                    <h3>Conception PowerPoint</h3>
+                    <p>Présentation PowerPoint structurée et visuellement impactante pour votre soutenance</p>
+                </div>
+                
+                <div class="service-card fade-in fade-in-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Attestation de Stage</h3>
+                    <p>Document officiel attestant la réalisation de votre stage avec validation formelle</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing" id="plans">
+        <div class="pricing-decoration"></div>
+        <div class="container">
+            <h2 class="section-title">Choisissez Votre Plan</h2>
+            <p class="section-subtitle">Des formules adaptées à vos besoins, avec la garantie d'un travail de qualité professionnelle</p>
+            
+            <div class="pricing-grid">
+                <!-- PLAN 1 -->
+                <div class="pricing-card fade-in">
+                    <span class="pricing-badge">Essentiel</span>
+                    <h3>Application Simple</h3>
+                    <div class="pricing-amount">30 000 <span>FCFA</span></div>
+                    <p class="pricing-note">(Négociable)</p>
+                    
+                    <ul class="pricing-features">
+                        <li>Application fonctionnelle</li>
+                        <li>Interface professionnelle</li>
+                        <li>Code propre et structuré</li>
+                        <li>Documentation technique</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/237657020100?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20plan%20Application%20Simple%20%C3%A0%2030%20000%20FCFA." 
+                       class="btn-pricing" 
+                       target="_blank">Choisir ce plan</a>
+                </div>
+
+                <!-- PLAN 2 -->
+                <div class="pricing-card fade-in fade-in-delay-1">
+                    <span class="pricing-badge">Populaire</span>
+                    <h3>Application + Rapport</h3>
+                    <div class="pricing-amount">35 000 <span>FCFA</span></div>
+                    <p class="pricing-note">(Négociable)</p>
+                    
+                    <ul class="pricing-features">
+                        <li>Application complète</li>
+                        <li>Rapport de stage professionnel</li>
+                        <li>Mise en forme académique</li>
+                        <li>Révisions incluses</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/237657020100?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20plan%20Application%20%2B%20Rapport%20%C3%A0%2035%20000%20FCFA." 
+                       class="btn-pricing" 
+                       target="_blank">Choisir ce plan</a>
+                </div>
+
+                <!-- PLAN 3 -->
+                <div class="pricing-card featured fade-in fade-in-delay-2">
+                    <span class="pricing-badge">Premium</span>
+                    <h3>Pack Complet</h3>
+                    <div class="pricing-amount">50 000 <span>FCFA</span></div>
+                    <p class="pricing-note">Tout inclus</p>
+                    
+                    <ul class="pricing-features">
+                        <li>Application professionnelle</li>
+                        <li>Rapport de stage complet</li>
+                        <li>Présentation PowerPoint</li>
+                        <li>Attestation de fin de stage</li>
+                        <li>Support prioritaire</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/237657020100?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Pack%20Complet%20%C3%A0%2050%20000%20FCFA." 
+                       class="btn-pricing" 
+                       target="_blank">Choisir ce plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Développement & Accompagnement Académique. Tous droits réservés.</p>
+            <p>Votre réussite académique est notre priorité</p>
+            <div class="footer-links">
+                <a href="#accueil">Accueil</a>
+                <a href="#services">Services</a>
+                <a href="#plans">Plans</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/237657020100?text=Bonjour%2C%20j'aimerais%20en%20savoir%20plus%20sur%20vos%20services." 
+       class="whatsapp-float" 
+       target="_blank"
+       aria-label="Contactez-nous sur WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.829.737 5.484 2.03 7.789L0 32l8.333-2.03C10.636 31.263 13.245 32 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm8.472 22.892c-.362.986-1.797 1.806-2.943 2.046-.773.162-1.783.287-5.181-1.109-4.359-1.784-7.187-6.241-7.405-6.525-.218-.285-1.783-2.37-1.783-4.518 0-2.147 1.129-3.206 1.531-3.645.402-.439.878-.549 1.171-.549.293 0 .586.003.843.015.27.014.632-.103.988.752.362.87 1.234 3.013 1.342 3.233.108.22.181.477.036.761-.145.285-.218.463-.436.71-.218.247-.458.551-.655.74-.218.209-.444.435-.191.854.253.419 1.127 1.858 2.418 3.009 1.662 1.48 3.064 1.94 3.497 2.159.433.218.686.182.938-.109.253-.291 1.084-1.263 1.373-1.697.29-.434.58-.362.978-.218.398.145 2.526 1.191 2.959 1.41.433.218.723.326.828.506.108.182.108 1.037-.254 2.023z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Generate animated particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 4 + 2;
+                const startX = Math.random() * 100;
+                const duration = Math.random() * 20 + 15;
+                const delay = Math.random() * 5;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${startX}%`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles on page load
+        window.addEventListener('load', createParticles);
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to hero orbs on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.glow-orb');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                orb.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Pricing card tilt effect
+        const pricingCards = document.querySelectorAll('.pricing-card');
+        pricingCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `translateY(-15px) scale(1.02) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
